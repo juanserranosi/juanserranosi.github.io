@@ -1,9 +1,9 @@
 ---
 templateKey: work-sub-page
-thumbnail: /img/clay-images-10.jpg
+thumbnail: /img/tlaloc_images_01.png
 date: 2023-01-02T15:04:10.000Z
-title: Sculpted Vessels
-description: Hand-built organic shapes inspired by coastal landscapes.
+title: 3D Work
+description: 3D projects.
 ---
 ## Organic Growth
 
