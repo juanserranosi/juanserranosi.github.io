@@ -149,6 +149,14 @@ production stylesheet in assets/built/screen.css using gulp dev
   transform: translateX(calc(50vw - 50%));
 }
 
+/* transform on a parent blocks iframe fullscreen; use margin centering instead */
+.post-content-image:has(.splat-viewer),
+.post-content-image:has(iframe) {
+  transform: none;
+  margin-left: calc(50% - 37.5vw);
+  margin-right: auto;
+}
+
 .contact-form-image {
   margin: 2vw 0;
   position: relative;
