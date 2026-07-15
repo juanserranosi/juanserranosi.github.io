@@ -1,43 +1,50 @@
 ---
+import { homePath, previewMode } from '../site';
+
 export interface Props {
     title?: string;
 }
 
 const { title } = Astro.props;
+const logoHref = previewMode ? homePath : '/';
 ---
 <header class="site-head">
     <div class="site-head-container">
-        <a class="nav-burger" href="#">
-            <div class="hamburger hamburger--collapse" aria-label="Menu" role="button" aria-controls="navigation">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner" />
+        {!previewMode && (
+            <a class="nav-burger" href="#">
+                <div class="hamburger hamburger--collapse" aria-label="Menu" role="button" aria-controls="navigation">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner" />
+                    </div>
                 </div>
-            </div>
-        </a>
-        <nav id="swup" class="site-head-left">
-            <ul class="nav" role="menu">
-                <li class="nav-home" role="menuitem">
-                    <a href="/">Home</a>
-                </li>
-                <li class="nav-home" role="menuitem">
-                    <a href="/bio">Bio</a>
-                </li>
-                <li class="nav-home" role="menuitem">
-                    <a href="/work">Work</a>
-                </li>
-                <li class="nav-home" role="menuitem">
-                    <a href="/news">News</a>
-                </li>
-                <li class="nav-home" role="menuitem">
-                    <a href="/contact">Contact</a>
-                </li>
-                <li class="nav-home" role="menuitem">
-                    <a href="/elements">Elements</a>
-                </li>
-            </ul>
-        </nav>
+            </a>
+        )}
+        {!previewMode && (
+            <nav id="swup" class="site-head-left">
+                <ul class="nav" role="menu">
+                    <li class="nav-home" role="menuitem">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-home" role="menuitem">
+                        <a href="/bio">Bio</a>
+                    </li>
+                    <li class="nav-home" role="menuitem">
+                        <a href="/work">Work</a>
+                    </li>
+                    <li class="nav-home" role="menuitem">
+                        <a href="/news">News</a>
+                    </li>
+                    <li class="nav-home" role="menuitem">
+                        <a href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-home" role="menuitem">
+                        <a href="/elements">Elements</a>
+                    </li>
+                </ul>
+            </nav>
+        )}
         <div class="site-head-center">
-            <a class="site-head-logo" href="/">
+            <a class="site-head-logo" href={logoHref}>
                 {title || "Clay"}
             </a>
         </div>

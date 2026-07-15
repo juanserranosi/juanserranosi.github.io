@@ -3,9 +3,14 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import Page from "../templates/Page.astro";
 import Contact from "../templates/Contact.astro";
 import List from "../templates/List.astro";
+import { previewMode } from "../site";
 // import Elements from '../templates/Elements.astro';
 
 export async function getStaticPaths() {
+  if (previewMode) {
+    return [];
+  }
+
   const pages = await getCollection("pages");
 
   // Pre-fetch other collections for index pages

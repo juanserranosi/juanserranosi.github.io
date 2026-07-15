@@ -1,7 +1,10 @@
 ---
+import { homePath, previewMode } from '../site';
+
+const footerHomeHref = previewMode ? homePath : '/';
 ---
 <footer class="site-foot">
-    <div>&copy; {new Date().getFullYear()} <a href="/">Clay</a></div>
+    <div>&copy; {new Date().getFullYear()} <a href={footerHomeHref}>Clay</a></div>
     <div>
         Powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> |
         Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT</a>

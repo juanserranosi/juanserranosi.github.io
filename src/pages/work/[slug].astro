@@ -1,9 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import WorkTemplate from '../../templates/Work.astro';
+import { previewMode, previewWorkSlug } from '../../site';
 
 export async function getStaticPaths() {
-  const workEntries = await getCollection('work');
+  let workEntries = await getCollection('work');
+  if (previewMode) {
+    workEntries = workEntries.filter((entry) => entry.slug === previewWorkSlug);
+  }
   // Sort by date or number if needed? Legacy sorted by date DESC in gatsby-node but actually didn't sort, just list.
   // Actually gatsby-node sorted `allMarkdownRemark(limit: 1000, sort: {frontmatter: {date: DESC}})`
   // So next/prev logic relies on this sort order.

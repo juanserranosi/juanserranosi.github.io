@@ -2,6 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
+import { homePath, previewMode } from '../site';
+
+if (previewMode) {
+  return Astro.redirect(homePath);
+}
 
 // Fetch all collections
 const allPages = await getCollection('pages');
@@ -33,22 +38,11 @@ let postCounter = 0;
     <div class="post-feed">
         {posts.map((post) => {
             postCounter++;
-            // Calculate slug. If it's from 'pages', slug is just slug (or flattened).
-            // content/pages/bio.md -> slug 'bio'.
-            // content/work/work-1.md -> slug 'work-1'? No, in config.ts, work collection.
-            // But legacy mapped work/work-1.md -> /work/work-1
-            // My [...slug].astro will handle mapping.
-            // Here I need to generate the same link.
 
             let slug = post.slug;
             if (post.collection === 'work') slug = `work/${post.slug}`;
             if (post.collection === 'news') slug = `news/${post.slug}`;
             if (post.collection === 'sold') slug = `sold/${post.slug}`;
-            // Pages collection: 'bio' -> 'bio'.
-
-            // Wait, legacy slug split logic:
-            // src/pages/bio/index.md -> /bio.
-            // content/work/work-1.md -> /work/work-1.
 
             return (
                 <PostCard

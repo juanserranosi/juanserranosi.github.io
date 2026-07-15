@@ -1,8 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import WorkTemplate from '../../templates/Work.astro';
+import { previewMode } from '../../site';
 
 export async function getStaticPaths() {
+  if (previewMode) {
+    return [];
+  }
+
   const entries = await getCollection('sold');
   // 'sold' items might rely on Number for sorting? Legacy gatsby-node sorted everything by date DESC.
   const sortedEntries = entries.sort((a, b) => {

@@ -1,8 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import WorkTemplate from '../../templates/Work.astro';
+import { previewMode } from '../../site';
 
 export async function getStaticPaths() {
+  if (previewMode) {
+    return [];
+  }
+
   const entries = await getCollection('news');
   const sortedEntries = entries.sort((a, b) => {
     return new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime();
