@@ -183,7 +183,8 @@ production stylesheet in assets/built/screen.css using gulp dev
 .post-content-body h4,
 .post-content-body h5,
 .post-content-body h6 {
-  color: var(--color-base);
+  /* inherit so dark mode works; postcss-custom-properties bakes var(--color-base) to light-mode */
+  color: inherit;
 }
 
 .post-content-body li {
