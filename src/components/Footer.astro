@@ -1,7 +1,7 @@
 ---
-import { homePath, previewMode } from '../site';
+import { previewMode } from '../site';
 
-const footerHomeHref = previewMode ? homePath : '/';
+const footerHomeHref = previewMode ? Astro.url.pathname : '/';
 ---
 <footer class="site-foot">
     <div>&copy; {new Date().getFullYear()} <a href={footerHomeHref}>Clay</a></div>

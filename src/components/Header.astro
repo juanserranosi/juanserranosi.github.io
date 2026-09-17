@@ -1,12 +1,12 @@
 ---
-import { homePath, previewMode } from '../site';
+import { previewMode } from '../site';
 
 export interface Props {
     title?: string;
 }
 
 const { title } = Astro.props;
-const logoHref = previewMode ? homePath : '/';
+const logoHref = previewMode ? Astro.url.pathname : '/';
 ---
 <header class="site-head">
     <div class="site-head-container">
